@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Список редких видов - таблица, график, фильтр</title>
+</head>
+
+<body>
+
+    <h1>Список редких видов животных</h1>
+
+    <hr>
+
+    <h2>Меню сайта</h2>
+    <p>
+        <a href="index.html">Главная страница</a><br>
+        <a href="amur_tiger.html">Амурский тигр - подробное описание</a><br>
+        <b><a href="table.html">Список редких видов (таблица, график, фильтр)</a></b>
+    </p>
+
+    <hr>
+
+    <h2>Настройка графика</h2>
+
+    <form>
+
+        <p>
+            <b>Значение по оси OX</b>
+        </p>
+        <p>
+            <input type="radio" name="ox" value="type" id="ox_type">
+            <label for="ox_type">Тип животного</label><br>
+
+            <input type="radio" name="ox" value="region" id="ox_region">
+            <label for="ox_region">Регион</label><br>
+
+            <input type="radio" name="ox" value="category" id="ox_category">
+            <label for="ox_category">Категория редкости</label><br>
+
+            <input type="radio" name="ox" value="year" id="ox_year">
+            <label for="ox_year">Год внесения в Красную книгу</label>
+        </p>
+
+        <p>
+            <b>Значение по оси OY</b>
+        </p>
+        <p>
+            <input type="checkbox" name="oy" value="min" id="oy_min">
+            <label for="oy_min">Минимальная численность</label><br>
+
+            <input type="checkbox" name="oy" value="max" id="oy_max">
+            <label for="oy_max">Максимальная численность</label><br>
+
+            <input type="checkbox" name="oy" value="avg" id="oy_avg">
+            <label for="oy_avg">Средняя численность</label>
+        </p>
+
+        <p>
+            <input type="button" value="Построить график">
+        </p>
+
+        <p>
+            <i>Здесь будет график. Возможно, когда-нибудь...</i>
+        </p>
+
+    </form>
+
+    <hr>
+
+    <h2>Фильтр</h2>
+
+    <form>
+        <p>
+            <label for="filter_name">Название:</label>
+            <input type="text" name="filter_name" id="filter_name" size="20">
+        </p>
+        <p>
+            <label for="filter_type">Тип:</label>
+            <select name="filter_type" id="filter_type">
+                <option value="any">- любой -</option>
+                <option value="mammal">Млекопитающее</option>
+                <option value="bird">Птица</option>
+                <option value="fish">Рыба</option>
+                <option value="amphibian">Амфибия</option>
+            </select>
+        </p>
+        <p>
+            <label for="filter_region">Регион:</label>
+            <input type="text" name="filter_region" id="filter_region" size="20">
+        </p>
+        <p>
+            <label for="filter_category">Категория редкости:</label>
+            <select name="filter_category" id="filter_category">
+                <option value="any">- любая -</option>
+                <option value="0">0 - вероятно исчезнувшие</option>
+                <option value="1">1 - под угрозой исчезновения</option>
+                <option value="2">2 - сокращающиеся</option>
+                <option value="3">3 - редкие</option>
+                <option value="4">4 - неопределённые</option>
+                <option value="5">5 - восстанавливаемые</option>
+            </select>
+        </p>
+        <p>
+            <label for="filter_year_from">Год от:</label>
+            <input type="text" name="filter_year_from" id="filter_year_from" size="6">
+            <label for="filter_year_to">до:</label>
+            <input type="text" name="filter_year_to" id="filter_year_to" size="6">
+        </p>
+        <p>
+            <label for="filter_num_from">Численность от:</label>
+            <input type="text" name="filter_num_from" id="filter_num_from" size="8">
+            <label for="filter_num_to">до:</label>
+            <input type="text" name="filter_num_to" id="filter_num_to" size="8">
+        </p>
+        <p>
+            <input type="button" value="Поиск">
+        </p>
+    </form>
+
+    <hr>
+
+    <h2>Сортировка</h2>
+
+    <form>
+        <p>
+            <label for="sort1">Первый уровень:</label>
+            <select name="sort1" id="sort1">
+                <option value="none">Нет</option>
+                <option value="name">Название</option>
+                <option value="type">Тип</option>
+                <option value="region">Регион</option>
+                <option value="category">Категория редкости</option>
+                <option value="year">Год</option>
+                <option value="number">Численность</option>
+            </select>
+            <input type="checkbox" name="sort1_desc" id="sort1_desc">
+            <label for="sort1_desc">по убыванию?</label>
+        </p>
+
+        <p>
+            <label for="sort2">Второй уровень:</label>
+            <select name="sort2" id="sort2">
+                <option value="none">Нет</option>
+                <option value="name">Название</option>
+                <option value="type">Тип</option>
+                <option value="region">Регион</option>
+                <option value="category">Категория редкости</option>
+                <option value="year">Год</option>
+                <option value="number">Численность</option>
+            </select>
+            <input type="checkbox" name="sort2_desc" id="sort2_desc">
+            <label for="sort2_desc">по убыванию?</label>
+        </p>
+
+        <p>
+            <label for="sort3">Третий уровень:</label>
+            <select name="sort3" id="sort3">
+                <option value="none">Нет</option>
+                <option value="name">Название</option>
+                <option value="type">Тип</option>
+                <option value="region">Регион</option>
+                <option value="category">Категория редкости</option>
+                <option value="year">Год</option>
+                <option value="number">Численность</option>
+            </select>
+            <input type="checkbox" name="sort3_desc" id="sort3_desc">
+            <label for="sort3_desc">по убыванию?</label>
+        </p>
+
+        <p>
+            <input type="button" value="Сортировка">
+        </p>
+    </form>
+
+    <hr>
+
+    <h2>Таблица редких видов</h2>
+
+    <table border="1" cellpadding="4" cellspacing="0">
+        <caption><b>Животные Красной книги России</b></caption>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Тип</th>
+                <th>Регион</th>
+                <th>Категория редкости</th>
+                <th>Год</th>
+                <th>Численность, особей</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Амурский тигр</td>
+                <td>Млекопитающее</td>
+                <td>Приморский край</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>600</td>
+            </tr>
+            <tr>
+                <td>Амурский леопард</td>
+                <td>Млекопитающее</td>
+                <td>Приморский край</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>120</td>
+            </tr>
+            <tr>
+                <td>Снежный барс</td>
+                <td>Млекопитающее</td>
+                <td>Алтай</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>Русский осётр</td>
+                <td>Рыба</td>
+                <td>Волга</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Стерх</td>
+                <td>Птица</td>
+                <td>Якутия</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Белый медведь</td>
+                <td>Млекопитающее</td>
+                <td>Арктика</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>25000</td>
+            </tr>
+            <tr>
+                <td>Красный волк</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>Речной бобр</td>
+                <td>Млекопитающее</td>
+                <td>Европейская часть</td>
+                <td>5</td>
+                <td>1983</td>
+                <td>70000</td>
+            </tr>
+            <tr>
+                <td>Выдра</td>
+                <td>Млекопитающее</td>
+                <td>Сибирь</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>15000</td>
+            </tr>
+            <tr>
+                <td>Манул</td>
+                <td>Млекопитающее</td>
+                <td>Забайкалье</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Джейран</td>
+                <td>Млекопитающее</td>
+                <td>Дагестан</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>Кулан</td>
+                <td>Млекопитающее</td>
+                <td>Калмыкия</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Сайгак</td>
+                <td>Млекопитающее</td>
+                <td>Калмыкия</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Амурский горал</td>
+                <td>Млекопитающее</td>
+                <td>Приморский край</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>700</td>
+            </tr>
+            <tr>
+                <td>Пятнистый олень</td>
+                <td>Млекопитающее</td>
+                <td>Приморский край</td>
+                <td>5</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Бурый медведь (камчатская популяция)</td>
+                <td>Млекопитающее</td>
+                <td>Камчатка</td>
+                <td>5</td>
+                <td>1983</td>
+                <td>15000</td>
+            </tr>
+            <tr>
+                <td>Черный аист</td>
+                <td>Птица</td>
+                <td>Сибирь</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Японский журавль</td>
+                <td>Птица</td>
+                <td>Приморский край</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>Даурский журавль</td>
+                <td>Птица</td>
+                <td>Забайкалье</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Красноногий ибис</td>
+                <td>Птица</td>
+                <td>Дальний Восток</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Рыбный филин</td>
+                <td>Птица</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Балобан</td>
+                <td>Птица</td>
+                <td>Алтай</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Сапсан</td>
+                <td>Птица</td>
+                <td>Камчатка</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Скопа</td>
+                <td>Птица</td>
+                <td>Карелия</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>Орлан-белохвост</td>
+                <td>Птица</td>
+                <td>Поволжье</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td>Змееяд</td>
+                <td>Птица</td>
+                <td>Центральная Россия</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Степной орел</td>
+                <td>Птица</td>
+                <td>Оренбургская область</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Могильник</td>
+                <td>Птица</td>
+                <td>Поволжье</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2500</td>
+            </tr>
+            <tr>
+                <td>Беркут</td>
+                <td>Птица</td>
+                <td>Алтай</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>1500</td>
+            </tr>
+            <tr>
+                <td>Кречет</td>
+                <td>Птица</td>
+                <td>Арктика</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Балтийская кольчатая нерпа</td>
+                <td>Млекопитающее</td>
+                <td>Балтика</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Ладожская нерпа</td>
+                <td>Млекопитающее</td>
+                <td>Ладожское озеро</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>Серый тюлень</td>
+                <td>Млекопитающее</td>
+                <td>Баренцево море</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Атлантический морж</td>
+                <td>Млекопитающее</td>
+                <td>Арктика</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>20000</td>
+            </tr>
+            <tr>
+                <td>Нарвал</td>
+                <td>Млекопитающее</td>
+                <td>Арктика</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Гренландский кит</td>
+                <td>Млекопитающее</td>
+                <td>Арктика</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Серый кит</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>Японский кит</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Синий кит</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>Финвал</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Сейвал</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Горбатый кит</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Кашалот</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Белуха</td>
+                <td>Млекопитающее</td>
+                <td>Арктика</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Косатка</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Тихоокеанский белобокий дельфин</td>
+                <td>Млекопитающее</td>
+                <td>Дальний Восток</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Афалина</td>
+                <td>Млекопитающее</td>
+                <td>Черное море</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Морская свинья</td>
+                <td>Млекопитающее</td>
+                <td>Черное море</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Русская выхухоль</td>
+                <td>Млекопитающее</td>
+                <td>Европейская часть</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Гигантская вечерница</td>
+                <td>Млекопитающее</td>
+                <td>Европейская часть</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Обыкновенный длиннокрыл</td>
+                <td>Млекопитающее</td>
+                <td>Кавказ</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Малый подковонос</td>
+                <td>Млекопитающее</td>
+                <td>Кавказ</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Большой подковонос</td>
+                <td>Млекопитающее</td>
+                <td>Кавказ</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>1500</td>
+            </tr>
+            <tr>
+                <td>Остроухая ночница</td>
+                <td>Млекопитающее</td>
+                <td>Крым</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Трехцветная ночница</td>
+                <td>Млекопитающее</td>
+                <td>Кавказ</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td>Амурский осётр</td>
+                <td>Рыба</td>
+                <td>Дальний Восток</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Сахалинский осётр</td>
+                <td>Рыба</td>
+                <td>Сахалин</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Калуга</td>
+                <td>Рыба</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>3000</td>
+            </tr>
+            <tr>
+                <td>Шип</td>
+                <td>Рыба</td>
+                <td>Волга</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>Стерлядь</td>
+                <td>Рыба</td>
+                <td>Сибирь</td>
+                <td>5</td>
+                <td>1983</td>
+                <td>50000</td>
+            </tr>
+            <tr>
+                <td>Таймень</td>
+                <td>Рыба</td>
+                <td>Сибирь</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Сахалинский таймень</td>
+                <td>Рыба</td>
+                <td>Сахалин</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Микижа</td>
+                <td>Рыба</td>
+                <td>Камчатка</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Кумжа</td>
+                <td>Рыба</td>
+                <td>Карелия</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>10000</td>
+            </tr>
+            <tr>
+                <td>Китайский окунь</td>
+                <td>Рыба</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Желтощёк</td>
+                <td>Рыба</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>Чёрный амур</td>
+                <td>Рыба</td>
+                <td>Дальний Восток</td>
+                <td>2</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Ленок</td>
+                <td>Рыба</td>
+                <td>Сибирь</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>15000</td>
+            </tr>
+            <tr>
+                <td>Волжская сельдь</td>
+                <td>Рыба</td>
+                <td>Волга</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>Кавказская крестовка</td>
+                <td>Амфибия</td>
+                <td>Кавказ</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>Малоазиатский тритон</td>
+                <td>Амфибия</td>
+                <td>Кавказ</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>Тритон Карелина</td>
+                <td>Амфибия</td>
+                <td>Кавказ</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td>Уссурийский когтистый тритон</td>
+                <td>Амфибия</td>
+                <td>Приморский край</td>
+                <td>1</td>
+                <td>1983</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>Обыкновенный тритон</td>
+                <td>Амфибия</td>
+                <td>Европейская часть</td>
+                <td>3</td>
+                <td>1983</td>
+                <td>30000</td>
+            </tr>
+            <tr>
+                <td>Сибирский углозуб</td>
+                <td>Амфибия</td>
+                <td>Сибирь</td>
+                <td>3</td>
+                <td>2001</td>
+                <td>20000</td>
+            </tr>
+            <tr>
+                <td>Обыкновенная чесночница</td>
+                <td>Амфибия</td>
+                <td>Европейская часть</td>
+                <td>3</td>
+                <td>2001</td>
+                <td>25000</td>
+            </tr>
+            <tr>
+                <td>Зелёная жаба</td>
+                <td>Амфибия</td>
+                <td>Европейская часть</td>
+                <td>3</td>
+                <td>2021</td>
+                <td>30000</td>
+            </tr>
+            <tr>
+                <td>Обыкновенная квакша</td>
+                <td>Амфибия</td>
+                <td>Кавказ</td>
+                <td>3</td>
+                <td>2021</td>
+                <td>15000</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
